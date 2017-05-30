@@ -5,7 +5,7 @@ public class GroundDetector : MonoBehaviour {
 
 	private bool onGround = true;
 
-	void OnColissionStart (Collider ground) {
+	void OnColissionEnter (Collider ground) {
 		onGround = true;
 
 	}
