@@ -17,6 +17,9 @@ public class Player : MonoBehaviour {
 				}
 			}
 		}
+
+		//sinnloser Kommentar
+
 		if (Input.GetKey (KeyCode.E)) {
 			if (equipped != null) {
 				equipped.use ();
