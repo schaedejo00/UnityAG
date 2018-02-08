@@ -49,8 +49,13 @@ public class PlayerMovement : MonoBehaviour {
 	void die(){
 		isAlive = false;
 	}
+    void die(string killer)
+    {
+        isAlive = false;
+        Debug.Log(killer);
+    }
 
-	void Update () {
+    void Update () {
 		yrot = (Input.GetAxis ("Mouse X") * RotationSpeedy * Time.deltaTime);
 		transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y +  yrot, transform.eulerAngles.z);
 		//Physics.gravity = new Vector3(0, -20.0F, 0);
@@ -152,5 +157,9 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKey (right)) {
 			rb.AddForce (transform.right.normalized * speed);
 		}
-	}
+        if (Input.GetKey(KeyCode.Comma))
+        {
+            liveManager.Health = 0;
+        }
+    }
 }

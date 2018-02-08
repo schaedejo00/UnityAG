@@ -7,7 +7,16 @@ using UnityEngine;
 public class LiveManager : MonoBehaviour {
 	// An private vor ändern mich bitte fragen
 	private int health;
+    public int startHealth=100;
+    public delegate void Death();
+    public event Death onDeath;
+
     private Renderer[] renderers;
+    void Start()
+    {
+        Health = startHealth;
+    }
+    //Update Methode sinnloss Property Effektiver
     public int Health
     {
         get
@@ -18,6 +27,11 @@ public class LiveManager : MonoBehaviour {
         set
         {
             health = value;
+            if (Health <= 0)
+            {
+                Debug.Log("Dead");
+                onDeath();
+            }
         }
     }
 
@@ -34,14 +48,6 @@ public class LiveManager : MonoBehaviour {
         }
     }
 
-    public delegate void Death ();
-	public event Death onDeath;
-
-	void Update () {
-		if (Health <= 0) {
-			Debug.Log ("Dead");
-			onDeath ();
-		}
-	}
+    
 
 }
