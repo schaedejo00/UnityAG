@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class LiveManager : MonoBehaviour {
 	
-	public int Health;
-	public Transform shootPosition;
-	public Renderer[] renderers;
+	public int health;
 
 	public delegate void Death ();
 	public event Death onDeath;
