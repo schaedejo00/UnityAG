@@ -12,10 +12,10 @@ public class PlayerMovement : MonoBehaviour {
 	public KeyCode reset;
 	public float maxSpeed = 5;
 	public float defaultSpeed = 400f;
-	public float rotationspeed = 50;
-	public float dashmax = 150;
-	public float dashtime = 10;
-	public float dashspeed = 5;
+	public float rotationSpeed = 50;
+	public float dashMax = 150;
+	public float dashTime = 10;
+	public float dashSpeed = 5;
 	public float brake = 0.05f;
 	public float brakeStop = 0.2f;
 	public float RotationSpeedy = 5;
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour {
 	private bool activeSpecialKeys = false;
 	private float speed = 2.5f;
 	private LiveManager liveManager;
-	private bool isAlive;
+	private bool isAlive=true;
 	private Vector3 startPosition;
 	private float gravityon = 1;
 	private Rigidbody rb;
@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Start () {
 		Cursor.visible = false;
-		isAlive = true;
 		activeSpecialKeys = false;
 		speed = defaultSpeed;
 		rb = GetComponent<Rigidbody> ();
@@ -49,8 +48,13 @@ public class PlayerMovement : MonoBehaviour {
 	void die(){
 		isAlive = false;
 	}
+    void die(string killer)
+    {
+        isAlive = false;
+        Debug.Log(killer);
+    }
 
-	void Update () {
+    void Update () {
 		yrot = (Input.GetAxis ("Mouse X") * RotationSpeedy * Time.deltaTime);
 		transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y +  yrot, transform.eulerAngles.z);
 		//Physics.gravity = new Vector3(0, -20.0F, 0);
@@ -82,13 +86,13 @@ public class PlayerMovement : MonoBehaviour {
 
 
 	private void dash(){
-		if (Input.GetKey (dashKey) && dashcount < dashmax) {
+		if (Input.GetKey (dashKey) && dashcount < dashMax) {
 			dashcount = dashcount + 1;
 		}
 		if (Input.GetKeyUp (dashKey)) {
-			dashon = dashtime;
-			speed = 1000 + dashspeed * dashcount;
-			rotationspeed = 50 + 0.1f * dashspeed * dashcount;
+			dashon = dashTime;
+			speed = 1000 + dashSpeed * dashcount;
+			rotationSpeed = 50 + 0.1f * dashSpeed * dashcount;
 			Debug.Log (speed);
 		}
 	}
@@ -117,7 +121,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		if (dashon <= 0) {
 			limitVelocity ();
-			rotationspeed = 50;
+			rotationSpeed = 50;
 			speed = defaultSpeed;
 		} else {
 			dashon--;
@@ -152,5 +156,9 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKey (right)) {
 			rb.AddForce (transform.right.normalized * speed);
 		}
-	}
+        if (Input.GetKey(KeyCode.Comma))
+        {
+            liveManager.Health = 0;
+        }
+    }
 }

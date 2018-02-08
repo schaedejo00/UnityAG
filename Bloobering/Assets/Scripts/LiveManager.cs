@@ -1,21 +1,53 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LiveManager : MonoBehaviour {
-	
-	public int Health;
-	public Transform shootPosition;
-	public Renderer[] renderers;
+	// An private vor ändern mich bitte fragen
+	private int health;
+    public int startHealth=100;
+    public delegate void Death();
+    public event Death onDeath;
 
-	public delegate void Death ();
-	public event Death onDeath;
+    private Renderer[] renderers;
+    void Start()
+    {
+        Health = startHealth;
+    }
+    //Update Methode sinnloss Property Effektiver
+    public int Health
+    {
+        get
+        {
+            return health;
+        }
 
-	void Update () {
-		if (Health <= 0) {
-			Debug.Log ("Dead");
-			onDeath ();
-		}
-	}
+        set
+        {
+            health = value;
+            if (Health <= 0)
+            {
+                Debug.Log("Dead");
+                onDeath();
+            }
+        }
+    }
+
+    public Renderer[] Renderers
+    {
+        get
+        {
+            return renderers;
+        }
+
+        set
+        {
+            renderers = value;
+        }
+    }
+
+    
 
 }
