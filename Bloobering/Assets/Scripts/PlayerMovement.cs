@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour {
 	private bool activeSpecialKeys = false;
 	private float speed = 2.5f;
 	private LiveManager liveManager;
-	private bool isAlive;
+	private bool isAlive=true;
 	private Vector3 startPosition;
 	private float gravityon = 1;
 	private Rigidbody rb;
@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Start () {
 		Cursor.visible = false;
-		isAlive = true;
 		activeSpecialKeys = false;
 		speed = defaultSpeed;
 		rb = GetComponent<Rigidbody> ();
