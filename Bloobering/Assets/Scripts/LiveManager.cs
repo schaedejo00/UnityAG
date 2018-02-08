@@ -5,10 +5,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LiveManager : MonoBehaviour {
-	
-	public int health;
+	// An private vor ändern mich bitte fragen
+	private int health;
+    private Renderer[] renderers;
+    public int Health
+    {
+        get
+        {
+            return health;
+        }
 
-	public delegate void Death ();
+        set
+        {
+            health = value;
+        }
+    }
+
+    public Renderer[] Renderers
+    {
+        get
+        {
+            return renderers;
+        }
+
+        set
+        {
+            renderers = value;
+        }
+    }
+
+    public delegate void Death ();
 	public event Death onDeath;
 
 	void Update () {

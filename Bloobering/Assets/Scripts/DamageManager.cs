@@ -21,12 +21,12 @@ public class DamageManager : MonoBehaviour {
 		if (liveManager != null) {
 			liveManager.Health -= damage;
 				if (liveManager.Health > 0) {
-					for (int i = 0; i < liveManager.renderers.Length / liveManager.Health - 1; i++) {
-						liveManager.renderers [Random.Range (0, liveManager.renderers.Length)].material.color = startColor;
+					for (int i = 0; i < liveManager.Renderers.Length / liveManager.Health - 1; i++) {
+						liveManager.Renderers [Random.Range (0, liveManager.Renderers.Length)].material.color = startColor;
 					}
 				} else {
-					for (int i = 0; i < liveManager.renderers.Length; i++) {
-						liveManager.renderers [i].material.color = startColor;
+					for (int i = 0; i < liveManager.Renderers.Length; i++) {
+						liveManager.Renderers [i].material.color = startColor;
 					}
 				GameObject.Find ("Text").GetComponent<Text> ().text = owner.name + " gewinnt!";
 					GameObject levelReload = Instantiate (levelReloader);
