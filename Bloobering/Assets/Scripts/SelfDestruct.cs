@@ -5,7 +5,7 @@ public class SelfDestruct : MonoBehaviour {
 
 	public float cooldown;
 	private float timer;
-	public GameObject shellexplosion;
+	public GameObject shellExplosion;
 	Transform Position;
 
 	// Use this for initialization
@@ -21,7 +21,7 @@ public class SelfDestruct : MonoBehaviour {
 	}
 	void OnCollisionEnter (Collision col){
 		
-		GameObject explosion = Instantiate (shellexplosion);
+		GameObject explosion = Instantiate (shellExplosion);
 		explosion.transform.position = transform.position;
 
 		if (col.gameObject.tag == "Player") {

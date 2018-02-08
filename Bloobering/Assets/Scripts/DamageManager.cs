@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class DamageManager : MonoBehaviour {
 	public int damage;
-	public GameObject levelreloader;
+	public GameObject levelReloader;
+	//Object where the DamageManager is attached
 	public GameObject owner;
+	//Startfarbe
 	private Color startColor;
 	// Use this for initialization
 	void Start () {
@@ -27,7 +29,7 @@ public class DamageManager : MonoBehaviour {
 						liveManager.renderers [i].material.color = startColor;
 					}
 				GameObject.Find ("Text").GetComponent<Text> ().text = owner.name + " gewinnt!";
-					GameObject levelreload = Instantiate (levelreloader);
+					GameObject levelReload = Instantiate (levelReloader);
 				}
 			}
 		}
