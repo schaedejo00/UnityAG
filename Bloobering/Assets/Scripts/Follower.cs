@@ -10,7 +10,6 @@ public class Follower : MonoBehaviour {
 	void LateUpdate () {
 		if (target != null) {
 			transform.position = target.position + offset;
-
 			transform.RotateAround (target.position, Vector3.up, target.eulerAngles.y);
 			transform.LookAt (target);
 		} else {

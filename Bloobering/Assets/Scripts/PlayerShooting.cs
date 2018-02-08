@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerShooting : MonoBehaviour {
 
-	public GameObject shellPrefab;
+	public GameObject Bloobering;
 	public Transform shootPosition;
 	public KeyCode shooting;
 	public float range = 10;
@@ -19,7 +19,7 @@ public class PlayerShooting : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey (shooting)) {
 			if (Time.time > timer) {
-				GameObject shell = Instantiate (shellPrefab);
+				GameObject shell = Instantiate (Bloobering);
 				shell.GetComponent<DamageManager> ().owner = this.gameObject;
 				shell.transform.position = shootPosition.position;
 				shell.transform.rotation = shootPosition.rotation;
