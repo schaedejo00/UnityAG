@@ -33,7 +33,7 @@ public class SpwaningManager : MonoBehaviour {
 			trueTimer = false;
 		}
 	}
-	// Update is called once per frame
+	// Update is called once per frame 
 	void Update () {
 		if (trueTimer == true) {
 			if (Time.time > timer||startSpawn == true||spawn == true||spawnNumber > 0) {
