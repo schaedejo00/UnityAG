@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class SpwaningManager : MonoBehaviour {
 
-	public float timerTime = 0f;
+	public float timeBetweenSpawns = 0f;
 	public float spawnNumber;
 	public bool startSpawn;
 	public bool spawn;
-	public bool randomPosition;
-	public float positionZ;
-	public float positionX;
+	public bool useRandomPosition;
 	public float minPositionX;
 	public float maxPositionX;
 	public float minPositionZ;
@@ -18,70 +16,81 @@ public class SpwaningManager : MonoBehaviour {
 	public GameObject blooberingPrefab;
 	public Follower follower;
 
-	private float randompositionx;
-	private float randompositionz;
-	private float timer;
-	private bool trueTimer;
 	private Transform spawnPosition;
-
+	struct Timer
+	{
+		public bool enabled;
+		public float nextEvent;
+		public float timeBetweenSpawns;
+	}
+	[System.Serializable]
+	public struct Point
+	{
+		public float x, y,z;
+	}
+	public Point spawnPoint = new Point();
+	private Point random = new Point();
+	private Timer timing = new Timer();
 	// Use this for initialization
 	void Start () {
-		if (timerTime > 0f) {
-			trueTimer = true;
-			timer = Time.time + timerTime;
+		timing.timeBetweenSpawns = timeBetweenSpawns;
+		if (timing.timeBetweenSpawns > 0f) {
+			timing.nextEvent = Time.time + timing.timeBetweenSpawns;
+			timing.enabled = true;
 		} else {
-			trueTimer = false;
+			timing.enabled = false;
 		}
 	}
 	// Update is called once per frame 
 	void Update () {
-		if (trueTimer == true) {
-			if (Time.time > timer||startSpawn == true||spawn == true||spawnNumber > 0) {
-				timer = Time.time + timerTime;
-				if (randomPosition == true) {
-					randompositionx = Random.Range (transform.position.x - minPositionX, transform.position.x + maxPositionX);
-					randompositionz = Random.Range (transform.position.z - minPositionZ, transform.position.z + maxPositionZ);
+		if (timing.enabled) {
+			if (Time.time > timing.nextEvent || startSpawn||spawn ||spawnNumber > 0) {
+				timing.nextEvent = Time.time + timing.timeBetweenSpawns;
+				if (useRandomPosition) {
+					
+					random.x = Random.Range (transform.position.x - minPositionX, transform.position.x + maxPositionX);
+					random.z = Random.Range (transform.position.z - minPositionZ, transform.position.z + maxPositionZ);
 					GameObject bloobering = Instantiate (blooberingPrefab);
-					bloobering.transform.position = new Vector3 (randompositionx, 1.4f, randompositionz);
+					bloobering.transform.position = new Vector3 (random.x, 1.4f, random.z);
 					follower.target = bloobering.transform;
 				} else {
 					GameObject bloobering = Instantiate (blooberingPrefab);
-					bloobering.transform.position = new Vector3 (positionX, 1.4f, positionZ);
+					bloobering.transform.position = new Vector3 (spawnPoint.x, 1.4f, spawnPoint.z);
 					follower.target = bloobering.transform;
 				}
-				print (randompositionx);
-				if (startSpawn == true) {
+				print (random.x);
+				if (startSpawn) {
 					startSpawn = false;
 				}
 				if (spawn == true) {
 					spawn = false;
 				}
 				if (spawnNumber > 0) {
-					spawnNumber = spawnNumber - 1;
+					spawnNumber--;
 				}
 			}
 		}
 		else{ 
 			if (startSpawn == true || spawn == true||spawnNumber > 0) {
-				if (randomPosition == true) {
-					randompositionx = Random.Range (transform.position.x - minPositionX, transform.position.x + maxPositionX);
-					randompositionz = Random.Range (transform.position.z - minPositionZ, transform.position.z + maxPositionZ);
+				if (useRandomPosition) {
+					random.x = Random.Range (transform.position.x - minPositionX, transform.position.x + maxPositionX);
+					random.z = Random.Range (transform.position.z - minPositionZ, transform.position.z + maxPositionZ);
 					GameObject bloobering = Instantiate (blooberingPrefab);
-					bloobering.transform.position = new Vector3 (randompositionx, 1.4f, randompositionz);
+					bloobering.transform.position = new Vector3 (random.x, 1.4f, random.z);
 					follower.target = bloobering.transform;
 				}else {
 					GameObject bloobering = Instantiate (blooberingPrefab);
-					bloobering.transform.position = new Vector3 (positionX, 1.4f, positionZ);
+					bloobering.transform.position = new Vector3 (spawnPoint.x, 1.4f, spawnPoint.z);
 					follower.target = bloobering.transform;
 				}
-				if (startSpawn == true) {
+				if (startSpawn) {
 					startSpawn = false;
 				}
-				if (spawn == true) {
+				if (spawn) {
 					spawn = false;
 				}
 				if (spawnNumber > 0) {
-					spawnNumber = spawnNumber - 1;
+					spawnNumber--;
 				}
 			}
 		}
