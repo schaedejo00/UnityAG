@@ -2,14 +2,19 @@
 
 public class PlayerMovement : MonoBehaviour {
 
-	public KeyCode forward;
-	public KeyCode left;
-	public KeyCode back;
-	public KeyCode right;
-	public KeyCode dashKey;
-	public KeyCode brakekey;
-	public KeyCode fly;
-	public KeyCode reset;
+	
+	[System.Serializable]
+	public struct KeyManager
+	{
+		public KeyCode forward;
+		public KeyCode left;
+		public KeyCode back;
+		public KeyCode right;
+		public KeyCode dashKey;
+		public KeyCode brakekey;
+		public KeyCode fly;
+		public KeyCode reset;
+	}
 	public float maxSpeed = 5;
 	public float defaultSpeed = 400f;
 	public float rotationSpeed = 50;
@@ -34,6 +39,7 @@ public class PlayerMovement : MonoBehaviour {
 	private float dashon = 0;
 	private float dashcount = 0;
 	private float yrot;
+	public KeyManager keySettings = new KeyManager();
 
 	void Start () {
 		Cursor.visible = false;
@@ -64,7 +70,7 @@ public class PlayerMovement : MonoBehaviour {
 				activeSpecialKeys = !activeSpecialKeys;
 				Debug.Log (activeSpecialKeys);
 			}
-			if (Input.GetKey (reset)) {
+			if (Input.GetKey (keySettings.reset)) {
 				resetPlayer ();
 			}
 			//if (rb.velocity.magnitude > 0) {
@@ -86,10 +92,10 @@ public class PlayerMovement : MonoBehaviour {
 
 
 	private void dash(){
-		if (Input.GetKey (dashKey) && dashcount < dashMax) {
+		if (Input.GetKey (keySettings.dashKey) && dashcount < dashMax) {
 			dashcount = dashcount + 1;
 		}
-		if (Input.GetKeyUp (dashKey)) {
+		if (Input.GetKeyUp (keySettings.dashKey)) {
 			dashon = dashTime;
 			speed = 1000 + dashSpeed * dashcount;
 			rotationSpeed = 50 + 0.1f * dashSpeed * dashcount;
@@ -99,7 +105,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	private void specialControls(){
 		if (activeSpecialKeys) {
-			if (Input.GetKeyDown (fly)) {
+			if (Input.GetKeyDown (keySettings.fly)) {
 				if (gravityon == 1) {
 					gravityon = 0;
 					rb.useGravity = false;
@@ -110,7 +116,7 @@ public class PlayerMovement : MonoBehaviour {
 				}
 			}	
 
-			if (Input.GetKey (brakekey)) {
+			if (Input.GetKey (keySettings.brakekey)) {
 				if (rb.velocity.magnitude > brakeStop) {
 					rb.velocity = rb.velocity * (1 - brake);
 				} else {
@@ -144,16 +150,16 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	private void movementControls(){
-		if (Input.GetKey (forward)) {
+		if (Input.GetKey (keySettings.forward)) {
 			rb.AddForce (transform.forward.normalized * speed);
 		}
-		if (Input.GetKey (back)) {
+		if (Input.GetKey (keySettings.back)) {
 			rb.AddForce (transform.forward.normalized * -speed);
 		}
-		if (Input.GetKey (left)) {
+		if (Input.GetKey (keySettings.left)) {
 			rb.AddForce (transform.right.normalized * -speed);
 		}
-		if (Input.GetKey (right)) {
+		if (Input.GetKey (keySettings.right)) {
 			rb.AddForce (transform.right.normalized * speed);
 		}
         if (Input.GetKey(KeyCode.Comma))
