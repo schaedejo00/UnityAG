@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 33806005726345270}
   - component: {fileID: 135029577791859786}
   - component: {fileID: 23094969111495144}
-  - component: {fileID: 114569324407400922}
+  - component: {fileID: 114735901847102350}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -309,23 +309,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb993a0a5007ede478ac0834f4996bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: 119
-  left: 97
-  back: 115
-  right: 100
-  dashKey: 0
-  brakekey: 0
-  fly: 0
-  reset: 0
   maxSpeed: 5
   defaultSpeed: 800
-  rotationspeed: 50
-  dashmax: 150
-  dashtime: 10
-  dashspeed: 5
+  rotationSpeed: 50
+  dashMax: 150
+  dashTime: 10
+  dashSpeed: 5
   brake: 0.05
   brakeStop: 0.2
   RotationSpeedy: 400
+  keySettings:
+    forward: 119
+    left: 97
+    back: 115
+    right: 100
+    dashKey: 0
+    brakekey: 0
+    fly: 0
+    reset: 0
 --- !u!114 &114157596442313474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -350,23 +351,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f692671605854f469fa1234f9a624d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bloobering: {fileID: 1195489367648164, guid: cfda9fc2b80fb5e409ebeb9cd5f9ce2c, type: 2}
+  projectil: {fileID: 0}
   shootPosition: {fileID: 4235711028636972}
   shooting: 323
   range: 200
   defaultCooldown: 0.5
---- !u!114 &114569324407400922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1804680620876564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 412be2b0a12ab1d4caecf7ce001e05fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeedX: 200
 --- !u!114 &114689794716750200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -378,9 +367,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa242d6ff296054aae0e08a21650e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
-  shootPosition: {fileID: 4154843562451734}
-  renderers: []
+  startHealth: 100
+--- !u!114 &114735901847102350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804680620876564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f626e43da62a9b142b0c73107c34762c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeedX: 50
 --- !u!114 &114879896815446522
 MonoBehaviour:
   m_ObjectHideFlags: 1

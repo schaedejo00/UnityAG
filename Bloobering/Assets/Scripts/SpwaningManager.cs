@@ -7,7 +7,6 @@ public class SpwaningManager : MonoBehaviour {
 	public float timeBetweenSpawns = 0f;
 	public float spawnNumber;
 	public bool startSpawn;
-	public bool spawn;
 	public bool useRandomPosition;
 	public float minPositionX;
 	public float maxPositionX;
@@ -44,7 +43,7 @@ public class SpwaningManager : MonoBehaviour {
 	// Update is called once per frame 
 	void Update () {
 		if (timing.enabled) {
-			if (Time.time > timing.nextEvent || startSpawn||spawn ||spawnNumber > 0) {
+			if (Time.time > timing.nextEvent || startSpawn||spawnNumber > 0) {
 				timing.nextEvent = Time.time + timing.timeBetweenSpawns;
 				if (useRandomPosition) {
 					
@@ -62,16 +61,13 @@ public class SpwaningManager : MonoBehaviour {
 				if (startSpawn) {
 					startSpawn = false;
 				}
-				if (spawn == true) {
-					spawn = false;
-				}
 				if (spawnNumber > 0) {
 					spawnNumber--;
 				}
 			}
 		}
 		else{ 
-			if (startSpawn == true || spawn == true||spawnNumber > 0) {
+			if (startSpawn == true || spawnNumber > 0) {
 				if (useRandomPosition) {
 					random.x = Random.Range (transform.position.x - minPositionX, transform.position.x + maxPositionX);
 					random.z = Random.Range (transform.position.z - minPositionZ, transform.position.z + maxPositionZ);
@@ -85,9 +81,6 @@ public class SpwaningManager : MonoBehaviour {
 				}
 				if (startSpawn) {
 					startSpawn = false;
-				}
-				if (spawn) {
-					spawn = false;
 				}
 				if (spawnNumber > 0) {
 					spawnNumber--;

@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 112000002, guid: 89e9055950c149d459dbd2d084ba52ff,
     type: 2}
   m_UseShadowmask: 1
@@ -141,13 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b575a7224bc28449b1c313df10bac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerTime: 0
+  timeBetweenSpawns: 0
   spawnNumber: 0
   startSpawn: 1
-  spawn: 0
-  randomPosition: 1
-  positionZ: 0
-  positionX: 0
+  useRandomPosition: 1
   minPositionX: 12
   maxPositionX: 12
   minPositionZ: 130
@@ -155,6 +151,10 @@ MonoBehaviour:
   blooberingPrefab: {fileID: 1804484127665426, guid: 92728319157d6fe409ba85f4c1dcdd0e,
     type: 2}
   follower: {fileID: 352883291}
+  spawnPoint:
+    x: 0
+    y: 0
+    z: 0
 --- !u!4 &19307657
 Transform:
   m_ObjectHideFlags: 0
@@ -278,7 +278,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
