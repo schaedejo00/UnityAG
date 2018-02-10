@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float dashTime = 10;
 	public float dashSpeed = 5;
 	public float brake = 0.05f;
+	
 	public float brakeStop = 0.2f;
 	public float RotationSpeedy = 5;
 	//public AudioSource motorSoundSource;
@@ -44,6 +45,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
 		Cursor.visible = false;
 		activeSpecialKeys = false;
+		Cursor.lockState = CursorLockMode.Locked;
 		speed = defaultSpeed;
 		rb = GetComponent<Rigidbody> ();
 		startPosition = transform.position;
@@ -52,6 +54,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void die(){
+		Cursor.lockState = CursorLockMode.None;
 		isAlive = false;
 	}
     void die(string killer)
@@ -61,8 +64,8 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Update () {
-		yrot = (Input.GetAxis ("Mouse X") * RotationSpeedy * Time.deltaTime);
-		transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y +  yrot, transform.eulerAngles.z);
+		fadeControll();
+		Debug.Log(transform.eulerAngles);
 		//Physics.gravity = new Vector3(0, -20.0F, 0);
 		if (isAlive) {
 			movementControls ();
@@ -145,7 +148,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	private void resetPlayer(){
 		transform.position = startPosition;
-		transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 0));
+		transform.rotation = Quaternion.Euler (Vector3.zero);
 		speed = defaultSpeed;
 	}
 
@@ -167,4 +170,10 @@ public class PlayerMovement : MonoBehaviour {
             liveManager.Health = 0;
         }
     }
+	private void fadeControll()
+	{
+		yrot = (Input.GetAxis("Mouse X") * RotationSpeedy * Time.deltaTime);
+		transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + yrot, transform.eulerAngles.z);
+		
+	}
 }

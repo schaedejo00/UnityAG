@@ -679,6 +679,52 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114055609783811028, guid: 92728319157d6fe409ba85f4c1dcdd0e,
+        type: 2}
+      propertyPath: keySettings.forward
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 114055609783811028, guid: 92728319157d6fe409ba85f4c1dcdd0e,
+        type: 2}
+      propertyPath: keySettings.left
+      value: 97
+      objectReference: {fileID: 0}
+    - target: {fileID: 114055609783811028, guid: 92728319157d6fe409ba85f4c1dcdd0e,
+        type: 2}
+      propertyPath: keySettings.back
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 114055609783811028, guid: 92728319157d6fe409ba85f4c1dcdd0e,
+        type: 2}
+      propertyPath: keySettings.dashKey
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114055609783811028, guid: 92728319157d6fe409ba85f4c1dcdd0e,
+        type: 2}
+      propertyPath: keySettings.brakekey
+      value: 98
+      objectReference: {fileID: 0}
+    - target: {fileID: 114055609783811028, guid: 92728319157d6fe409ba85f4c1dcdd0e,
+        type: 2}
+      propertyPath: keySettings.fly
+      value: 102
+      objectReference: {fileID: 0}
+    - target: {fileID: 114055609783811028, guid: 92728319157d6fe409ba85f4c1dcdd0e,
+        type: 2}
+      propertyPath: keySettings.reset
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 114272883530711888, guid: 92728319157d6fe409ba85f4c1dcdd0e,
+        type: 2}
+      propertyPath: projectil
+      value: 
+      objectReference: {fileID: 1195489367648164, guid: cfda9fc2b80fb5e409ebeb9cd5f9ce2c,
+        type: 2}
+    - target: {fileID: 114569324407400922, guid: 92728319157d6fe409ba85f4c1dcdd0e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114740428898451630, guid: 92728319157d6fe409ba85f4c1dcdd0e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 92728319157d6fe409ba85f4c1dcdd0e, type: 2}
@@ -699,7 +745,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 437818021}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 412be2b0a12ab1d4caecf7ce001e05fc, type: 3}
   m_Name: 
@@ -1758,44 +1804,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd0d7091fe3f1d24e81321bc2e4209df, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1726960898 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1804484127665426, guid: 92728319157d6fe409ba85f4c1dcdd0e,
-    type: 2}
-  m_PrefabInternal: {fileID: 392743660}
---- !u!114 &1726960904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1726960898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f692671605854f469fa1234f9a624d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shellPrefab: {fileID: 1195489367648164, guid: cfda9fc2b80fb5e409ebeb9cd5f9ce2c,
-    type: 2}
-  shootPosition: {fileID: 1277063944}
-  shooting: 323
-  range: 200
-  defaultCooldown: 0.5
---- !u!114 &1726960905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1726960898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa58a6f86748be448e7c891e17acd2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 32
-  jumpspeed: 600
-  gravity: 0.01
-  cooldown: 0.001
-  jumptimeadd: 0.2
 --- !u!1001 &1785735968
 Prefab:
   m_ObjectHideFlags: 0

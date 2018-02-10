@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 3
-  shellexplosion: {fileID: 1287762702078542, guid: 16cec92e2fd642e43842b5e962db5d03,
+  shellExplosion: {fileID: 1287762702078542, guid: 16cec92e2fd642e43842b5e962db5d03,
     type: 2}
 --- !u!114 &114696899769351754
 MonoBehaviour:
@@ -128,8 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  levelreloader: {fileID: 1546717010364006, guid: d11c965be264a0149850cd045fc960cb,
-    type: 2}
+  levelReloader: {fileID: 0}
   owner: {fileID: 0}
 --- !u!135 &135456954341724358
 SphereCollider:
