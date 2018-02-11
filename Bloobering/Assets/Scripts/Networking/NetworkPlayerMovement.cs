@@ -54,8 +54,13 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 		{
 			meshRenderer.material.color = new Color(Random.Range(0F, 1F), Random.Range(0F, 1F), Random.Range(0F, 1F));
 		}
-		cam = Instantiate(Camera);
-		cam.GetComponent<Follower>().target = this.transform;
+		if (isLocalPlayer)
+		{
+			cam = Instantiate(Camera);
+			cam.GetComponent<Follower>().target = this.transform;
+			Debug.LogWarning(gameObject.GetComponent<NetworkIdentity>().netId);
+		}
+		
 		Cursor.visible = false;
 		activeSpecialKeys = false;
 		Cursor.lockState = CursorLockMode.Locked;
@@ -81,7 +86,7 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 			return;
 		}
 		fadeControll();
-		Debug.Log(transform.eulerAngles);
+		//Debug.Log(transform.eulerAngles);
 		//Physics.gravity = new Vector3(0, -20.0F, 0);
 		if (isAlive) {
 			movementControls ();

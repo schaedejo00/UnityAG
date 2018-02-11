@@ -7,7 +7,7 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 	public GameObject projectil;
 	public Transform shootPosition;
 	public KeyCode shooting;
-	public float range = 10;
+	public float range = 100;
 	public float defaultCooldown;
 	struct Cooldown
 	{
@@ -35,24 +35,20 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 		}
 		if (Input.GetKey (shooting)) {
 			if (Time.time > cooldown.nextShot) {
-				CmdFire();
+				CmdFire(shootPosition.position);
 				cooldown.calcNextShoot();
 			}
 		}
 	
 	}
 	[Command]
-	void CmdFire()
+	void CmdFire(Vector3 shootpos)
 	{
 		GameObject shell = Instantiate(projectil);
 		shell.GetComponent<NetworkDamageManager>().owner = this.gameObject;
-		Vector3 pos = shootPosition.position;
-		//pos.x = pos.x + 1;
-		//pos.y = pos.y + 1;
-		//pos.z = pos.z + 1;
-		shell.transform.position = pos;
+		shell.transform.position = shootpos;
 		shell.transform.rotation = shootPosition.rotation;
-		shell.GetComponent<Rigidbody>().AddForce(shootPosition.forward.normalized * range);
+		shell.GetComponent<Rigidbody>().AddForce(shootPosition.forward.normalized * 100);
 		NetworkServer.Spawn(shell);
 	}
 }

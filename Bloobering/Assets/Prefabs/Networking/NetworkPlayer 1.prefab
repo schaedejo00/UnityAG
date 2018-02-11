@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 114600595095979596}
   - component: {fileID: 114722513501265736}
   - component: {fileID: 114177751222327094}
+  - component: {fileID: 114043309221794748}
   m_Layer: 0
   m_Name: NetworkPlayer 1
   m_TagString: Player
@@ -112,7 +113,8 @@ GameObject:
   - component: {fileID: 33282239760345214}
   - component: {fileID: 135560991907722030}
   - component: {fileID: 23675197977161170}
-  - component: {fileID: 114656069555716738}
+  - component: {fileID: 114358285538682804}
+  - component: {fileID: 114333859309220282}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -331,6 +333,25 @@ MonoBehaviour:
     brakekey: 0
     fly: 0
     reset: 0
+--- !u!114 &114043309221794748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827169586183368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 4380769509904620}
+  m_ChildIndex: 0
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!114 &114177751222327094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -352,6 +373,50 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114333859309220282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899827635218614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 66
+    i1: 217
+    i2: 84
+    i3: 249
+    i4: 120
+    i5: 111
+    i6: 33
+    i7: 68
+    i8: 91
+    i9: 114
+    i10: 58
+    i11: 177
+    i12: 112
+    i13: 139
+    i14: 181
+    i15: 98
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114358285538682804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899827635218614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f5db11b7917fe48b2cd6b1690fb37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeedX: 50
 --- !u!114 &114600595095979596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -381,18 +446,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clonePrefab: {fileID: 4634349103473570}
   radius: 1.3
---- !u!114 &114656069555716738
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1899827635218614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f626e43da62a9b142b0c73107c34762c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeedX: 50
 --- !u!114 &114665301368115368
 MonoBehaviour:
   m_ObjectHideFlags: 1

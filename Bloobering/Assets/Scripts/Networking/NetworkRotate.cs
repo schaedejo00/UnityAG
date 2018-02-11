@@ -9,7 +9,7 @@ public class NetworkRotate : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!isLocalPlayer)
+		if (!transform.GetComponentInParent<NetworkPlayerMovement>().isLocalPlayer)
 		{
 			return;
 		}
