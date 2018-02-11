@@ -320,7 +320,7 @@ MonoBehaviour:
   dashSpeed: 5
   brake: 0.05
   brakeStop: 0.2
-  RotationSpeedy: 5
+  RotationSpeedy: 20
   keySettings:
     forward: 119
     left: 97
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f692671605854f469fa1234f9a624d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectil: {fileID: 0}
+  projectil: {fileID: 1195489367648164, guid: cfda9fc2b80fb5e409ebeb9cd5f9ce2c, type: 2}
   shootPosition: {fileID: 4235711028636972}
   shooting: 323
   range: 200

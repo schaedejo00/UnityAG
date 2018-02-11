@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class Rotate : MonoBehaviour {
 	public float rotationSpeedX = 50;
@@ -12,12 +13,12 @@ public class Rotate : MonoBehaviour {
 		transform.Rotate(xRot, 0, 0);
 		if (transform.eulerAngles.x < 280)
 		{
-			Vector3 newRotation = new Vector3(283, transform.eulerAngles.y, transform.eulerAngles.z);
+			Vector3 newRotation = new Vector3(280, transform.eulerAngles.y, transform.eulerAngles.z);
 			transform.rotation = Quaternion.Euler(newRotation);
 		}
-		if (transform.eulerAngles.x > 355)
+		if (transform.eulerAngles.x > 350)
 		{
-			Vector3 newRotation = new Vector3(353, transform.eulerAngles.y, transform.eulerAngles.z);
+			Vector3 newRotation = new Vector3(350, transform.eulerAngles.y, transform.eulerAngles.z);
 			transform.rotation = Quaternion.Euler(newRotation);
 		}
 	}

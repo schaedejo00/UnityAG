@@ -34,6 +34,8 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 	private bool activeSpecialKeys = false;
 	private float speed = 2.5f;
 	private LiveManager liveManager;
+	public bool randomColor;
+	private MeshRenderer meshRenderer;
 	private bool isAlive=true;
 	private Vector3 startPosition;
 	private float gravityon = 1;
@@ -47,7 +49,11 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 	
 
 	void Start () {
-		
+		meshRenderer = GetComponentInChildren<MeshRenderer>();
+		if (meshRenderer != null && randomColor)
+		{
+			meshRenderer.material.color = new Color(Random.Range(0F, 1F), Random.Range(0F, 1F), Random.Range(0F, 1F));
+		}
 		cam = Instantiate(Camera);
 		cam.GetComponent<Follower>().target = this.transform;
 		Cursor.visible = false;
