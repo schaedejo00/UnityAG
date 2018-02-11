@@ -431,7 +431,7 @@ MonoBehaviour:
   projectil: {fileID: 1195489367648164, guid: 506f666f803272349a93dd1f0df18b21, type: 2}
   shootPosition: {fileID: 4645550022902672}
   shooting: 102
-  range: 100
+  range: 40
   defaultCooldown: 1
 --- !u!114 &114654781172379152
 MonoBehaviour:

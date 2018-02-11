@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class NetworkPlayerMovement : NetworkBehaviour {
@@ -40,6 +41,7 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 	private Vector3 startPosition;
 	private float gravityon = 1;
 	private Rigidbody rb;
+	//public GameObject text;
 	private float rotation;
 	private float dashon = 0;
 	private float dashcount = 0;
@@ -60,7 +62,6 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 			cam.GetComponent<Follower>().target = this.transform;
 			Debug.LogWarning(gameObject.GetComponent<NetworkIdentity>().netId);
 		}
-		
 		Cursor.visible = false;
 		activeSpecialKeys = false;
 		Cursor.lockState = CursorLockMode.Locked;
@@ -73,6 +74,7 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 
 	void die(){
 		Cursor.lockState = CursorLockMode.None;
+		Destroy(cam);
 		isAlive = false;
 	}
     void die(string killer)
@@ -85,6 +87,7 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 		if (!isLocalPlayer) {
 			return;
 		}
+		
 		fadeControll();
 		//Debug.Log(transform.eulerAngles);
 		//Physics.gravity = new Vector3(0, -20.0F, 0);

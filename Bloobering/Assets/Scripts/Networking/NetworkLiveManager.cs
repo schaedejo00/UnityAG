@@ -30,7 +30,7 @@ public class NetworkLiveManager :NetworkBehaviour {
             health = value;
             if (Health <= 0)
             {
-                Debug.Log("Dead");
+                Debug.LogError("Dead");
                 onDeath();
             }
         }
@@ -38,6 +38,10 @@ public class NetworkLiveManager :NetworkBehaviour {
 
 	public void takeDamage(int damage)
 	{
+		if (!isServer)
+		{
+			return;
+		}
 		if (damage < 0)
 		{
 			return;
