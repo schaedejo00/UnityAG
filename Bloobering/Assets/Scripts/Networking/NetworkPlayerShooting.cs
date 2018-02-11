@@ -24,6 +24,7 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 
 	void Start(){
 		cooldown.delay = defaultCooldown;
+		//shootPosition= gameObject.transform.GetChild(0).GetChild(0).transform;
 	}
 
 	// Update is called once per frame
@@ -34,14 +35,24 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 		}
 		if (Input.GetKey (shooting)) {
 			if (Time.time > cooldown.nextShot) {
-				GameObject shell = Instantiate (projectil);
-				shell.GetComponent<DamageManager> ().owner = this.gameObject;
-				shell.transform.position = shootPosition.position;
-				shell.transform.rotation = shootPosition.rotation;
-				shell.GetComponent<Rigidbody> ().AddForce (shootPosition.forward.normalized * range);
+				CmdFire();
 				cooldown.calcNextShoot();
 			}
 		}
 	
+	}
+	[Command]
+	void CmdFire()
+	{
+		GameObject shell = Instantiate(projectil);
+		shell.GetComponent<NetworkDamageManager>().owner = this.gameObject;
+		Vector3 pos = shootPosition.position;
+		//pos.x = pos.x + 1;
+		//pos.y = pos.y + 1;
+		//pos.z = pos.z + 1;
+		shell.transform.position = pos;
+		shell.transform.rotation = shootPosition.rotation;
+		shell.GetComponent<Rigidbody>().AddForce(shootPosition.forward.normalized * range);
+		NetworkServer.Spawn(shell);
 	}
 }

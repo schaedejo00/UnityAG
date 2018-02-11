@@ -29,14 +29,18 @@ public class PlayerShooting : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey (shooting)) {
 			if (Time.time > cooldown.nextShot) {
-				GameObject shell = Instantiate (projectil);
-				shell.GetComponent<DamageManager> ().owner = this.gameObject;
-				shell.transform.position = shootPosition.position;
-				shell.transform.rotation = shootPosition.rotation;
-				shell.GetComponent<Rigidbody> ().AddForce (shootPosition.forward.normalized * range);
+				Fire();
 				cooldown.calcNextShoot();
 			}
 		}
 	
+	}
+	void Fire()
+	{
+		GameObject shell = Instantiate(projectil);
+		shell.GetComponent<DamageManager>().owner = this.gameObject;
+		shell.transform.position = shootPosition.position;
+		shell.transform.rotation = shootPosition.rotation;
+		shell.GetComponent<Rigidbody>().AddForce(shootPosition.forward.normalized * range);
 	}
 }

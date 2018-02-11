@@ -33,7 +33,7 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 
 	private bool activeSpecialKeys = false;
 	private float speed = 2.5f;
-	private LiveManager liveManager;
+	private NetworkLiveManager liveManager;
 	public bool randomColor;
 	private MeshRenderer meshRenderer;
 	private bool isAlive=true;
@@ -62,7 +62,7 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 		speed = defaultSpeed;
 		rb = GetComponent<Rigidbody> ();
 		startPosition = transform.position;
-		liveManager = GetComponent<LiveManager> ();
+		liveManager = GetComponent<NetworkLiveManager> ();
 		liveManager.onDeath += die;
 	}
 
