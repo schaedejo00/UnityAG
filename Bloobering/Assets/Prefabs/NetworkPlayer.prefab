@@ -321,6 +321,7 @@ MonoBehaviour:
   brake: 0.05
   brakeStop: 0.2
   RotationSpeedy: 20
+  randomColor: 1
   keySettings:
     forward: 119
     left: 97

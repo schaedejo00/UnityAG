@@ -3,8 +3,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class LiveManager :MonoBehaviour {
+public class NetworkLiveManager :NetworkBehaviour {
 	// An private vor ändern mich bitte fragen
 	private int health;
     public int startHealth=100;
