@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4292504457759398}
   - component: {fileID: 198635612792162612}
   - component: {fileID: 199326330958181600}
+  - component: {fileID: 114729722762034540}
   m_Layer: 0
   m_Name: networkExplosion
   m_TagString: Untagged
@@ -41,6 +42,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114729722762034540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1287762702078542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 163
+    i1: 152
+    i2: 51
+    i3: 251
+    i4: 141
+    i5: 84
+    i6: 76
+    i7: 100
+    i8: 57
+    i9: 203
+    i10: 171
+    i11: 226
+    i12: 34
+    i13: 57
+    i14: 31
+    i15: 197
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!198 &198635612792162612
 ParticleSystem:
   m_ObjectHideFlags: 1

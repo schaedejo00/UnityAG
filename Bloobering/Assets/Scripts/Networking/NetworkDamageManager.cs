@@ -8,21 +8,15 @@ public class NetworkDamageManager :NetworkBehaviour {
 	[SyncVar]
 	public int damage=50;
 	public GameObject explosion;
-	private float time;
 	public float duration = 1F;
-	private void Start()
-	{
-		time = Time.time;
-	}
 	public GameObject owner;
-	
+	private Color ownerColor;
+	[SyncVar]
+	public float r,g,b;
 	void OnCollisionEnter (Collision col){
 		if (explosion != null)
 		{
-			GameObject explosionAnimation = Instantiate(explosion);
-			explosionAnimation.transform.position = transform.position;
-			explosionAnimation.GetComponent<ParticleSystemRenderer>().material.color = owner.GetComponent<NetworkPlayerMovement>().PlayerColor;
-			Destroy(explosionAnimation, duration);
+			CmdExplode();
 		}
 		
 		NetworkLiveManager liveManager = col.gameObject.GetComponent<NetworkLiveManager> ();
@@ -33,4 +27,14 @@ public class NetworkDamageManager :NetworkBehaviour {
 			}
 		Destroy(this.gameObject);
 		}
+	
+	void CmdExplode()
+	{
+		GameObject explosionAnimation = Instantiate(explosion);
+		explosionAnimation.transform.position = transform.position;
+
+		explosionAnimation.GetComponent<ParticleSystemRenderer>().material.color = new Color(r,g,b);
+		NetworkServer.Spawn(explosionAnimation);
+		Destroy(explosionAnimation, duration);
+	}
 }

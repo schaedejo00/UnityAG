@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 
 public class NetworkLiveManager :NetworkBehaviour {
 	// An private vor ändern mich bitte fragen
-	[SyncVar]
+	[SyncVar(hook = "OnChangeHealth")]
 	private int health;
 	public RectTransform healthBar;
 	public int startHealth=100;
@@ -53,6 +53,9 @@ public class NetworkLiveManager :NetworkBehaviour {
 		Health = Health - damage;
 	}
 
-    
+	void OnChangeHealth(int health)
+	{
+		healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
+	}
 
 }

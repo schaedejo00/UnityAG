@@ -44,6 +44,7 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 	private NetworkLiveManager liveManager;
 	public bool randomColor;
 	private MeshRenderer meshRenderer;
+	[SyncVar]
 	private bool isAlive=true;
 	private Vector3 startPosition;
 	private float gravityon = 1;
@@ -67,6 +68,19 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 		set
 		{
 			playerColor = value;
+		}
+	}
+
+	public bool IsAlive
+	{
+		get
+		{
+			return isAlive;
+		}
+
+		set
+		{
+			//isAlive = value;
 		}
 	}
 
