@@ -28,6 +28,10 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 	
 	public float brakeStop = 0.2f;
 	public float RotationSpeedy = 5;
+	[SyncVar]
+	private bool colorCreated=false;
+	[SyncVar]
+	public float red, green, blue;
 	//public AudioSource motorSoundSource;
 	//public AudioClip engineDriving;
 	//public AudioClip engineIdle;
@@ -48,13 +52,39 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 	private float yrot;
 	public KeyManager keySettings = new KeyManager();
 	private GameObject cam;
-	
+	private Color playerColor;
+
+	public Color PlayerColor
+	{
+		get
+		{
+			return playerColor;
+		}
+
+		set
+		{
+			playerColor = value;
+		}
+	}
 
 	void Start () {
 		meshRenderer = GetComponentInChildren<MeshRenderer>();
 		if (meshRenderer != null && randomColor)
 		{
-			meshRenderer.material.color = new Color(Random.Range(0F, 1F), Random.Range(0F, 1F), Random.Range(0F, 1F));
+			
+			if (colorCreated)
+			{
+				PlayerColor = new Color(red, green, blue);
+			}
+			else
+			{
+				red = Random.Range(0F, 1F);
+				green = Random.Range(0F, 1F);
+				blue = Random.Range(0F, 1F);
+				PlayerColor = new Color(red, green, blue);
+				colorCreated = true;
+			}
+			meshRenderer.material.color = PlayerColor;
 		}
 		if (isLocalPlayer)
 		{

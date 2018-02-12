@@ -46,6 +46,7 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 	{
 		GameObject shell = Instantiate(projectil, shootPosition.position, shootPosition.rotation);
 		shell.GetComponent<NetworkDamageManager>().owner = this.gameObject;
+		shell.GetComponent<MeshRenderer>().material.color = GetComponent<NetworkPlayerMovement>().PlayerColor;
 		shell.GetComponent<Rigidbody>().velocity=shootPosition.transform.forward.normalized * range;
 		NetworkServer.Spawn(shell);
 	}
