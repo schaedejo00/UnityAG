@@ -9,6 +9,7 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 	public KeyCode shooting;
 	public float range = 40;
 	public float defaultCooldown;
+	public float destroyShootAfter = 3F;
 	struct Cooldown
 	{
 		public bool enabled;
@@ -24,7 +25,7 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 
 	void Start(){
 		cooldown.delay = defaultCooldown;
-		//shootPosition= gameObject.transform.GetChild(0).GetChild(0).transform;
+		
 	}
 
 	// Update is called once per frame

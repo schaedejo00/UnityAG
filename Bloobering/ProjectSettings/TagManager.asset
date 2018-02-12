@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - Border
   - Healtstate
+  - StartCamera
   layers:
   - Default
   - TransparentFX

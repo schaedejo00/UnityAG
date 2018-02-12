@@ -18,6 +18,9 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 		public KeyCode reset;
 	}
 	public GameObject Camera;
+	public GameObject barrel;
+	public GameObject scope;
+	public GameObject particleSystemBlob;
 	public float maxSpeed = 5;
 	public float defaultSpeed = 400f;
 	public float rotationSpeed = 50;
@@ -85,13 +88,22 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 				colorCreated = true;
 			}
 			meshRenderer.material.color = PlayerColor;
+			barrel.GetComponent<MeshRenderer>().material.color = PlayerColor;
+			particleSystemBlob.GetComponent<ParticleSystemRenderer>().material.color = PlayerColor;
+			var col = scope.GetComponent<ParticleSystem>().colorOverLifetime;
+			Gradient gradient = new Gradient();
+			gradient.SetKeys(new GradientColorKey[] { new GradientColorKey(PlayerColor,0.0F), new GradientColorKey(Color.white, 1.0F) },new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) } );
+			col.color = gradient;
 		}
 		if (isLocalPlayer)
 		{
+			
 			cam = Instantiate(Camera);
 			cam.GetComponent<Follower>().target = this.transform;
-			Debug.LogWarning(gameObject.GetComponent<NetworkIdentity>().netId);
+			//Debug.LogWarning(gameObject.GetComponent<NetworkIdentity>().netId);
+			GameObject.FindGameObjectWithTag("StartCamera").SetActive(false);
 		}
+		scope.SetActive(isLocalPlayer);
 		Cursor.visible = false;
 		activeSpecialKeys = false;
 		Cursor.lockState = CursorLockMode.Locked;
@@ -104,6 +116,7 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 
 	void die(){
 		Cursor.lockState = CursorLockMode.None;
+		GameObject.FindGameObjectWithTag("StartCamera").SetActive(true);
 		Destroy(cam);
 		isAlive = false;
 	}

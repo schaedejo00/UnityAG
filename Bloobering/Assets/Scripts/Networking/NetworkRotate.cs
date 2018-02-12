@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class NetworkRotate : NetworkBehaviour {
+public class NetworkRotate : MonoBehaviour {
 	public float rotationSpeedX = 50;
 	private float xRot;
 	

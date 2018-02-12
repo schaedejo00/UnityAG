@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 135456954341724358}
   - component: {fileID: 23794828957693754}
   - component: {fileID: 54236129329225696}
-  - component: {fileID: 114499540654191044}
   - component: {fileID: 114432964141610678}
   - component: {fileID: 114381168922391590}
   - component: {fileID: 114634959304891502}
@@ -147,21 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  explosion: {fileID: 1287762702078542, guid: a39833fb8d544c6439cbabe222391fc5, type: 2}
+  duration: 1
   owner: {fileID: 0}
---- !u!114 &114499540654191044
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1195489367648164}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c7cb51b510b904984b0653bcd2ce1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 3
-  shellExplosion: {fileID: 1287762702078542, guid: 16cec92e2fd642e43842b5e962db5d03,
-    type: 2}
 --- !u!114 &114634959304891502
 MonoBehaviour:
   m_ObjectHideFlags: 1
