@@ -15,7 +15,7 @@ public class levelreloader : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Time.time >= timer) {
-			Application.LoadLevel ("AI vs Player");
+			//Application.LoadLevel ("AI vs Player");
 		}
 	}
 }

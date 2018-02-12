@@ -48,9 +48,10 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 		GameObject shell = Instantiate(projectil, shootPosition.position, shootPosition.rotation);
 		shell.GetComponent<NetworkDamageManager>().owner = this.gameObject;
 		Color pcolor = GetComponent<NetworkPlayerMovement>().PlayerColor;
-		shell.GetComponent<NetworkDamageManager>().r = pcolor.r;
-		shell.GetComponent<NetworkDamageManager>().g = pcolor.g;
-		shell.GetComponent<NetworkDamageManager>().b = pcolor.b;
+		
+		shell.GetComponent<NetSelfDestruct>().r = pcolor.r;
+		shell.GetComponent<NetSelfDestruct>().g = pcolor.g;
+		shell.GetComponent<NetSelfDestruct>().b = pcolor.b;
 		shell.GetComponent<MeshRenderer>().material.color = GetComponent<NetworkPlayerMovement>().PlayerColor;
 		shell.GetComponent<Rigidbody>().velocity=shootPosition.transform.forward.normalized * range;
 		NetworkServer.Spawn(shell);
