@@ -17,7 +17,10 @@ public class NetworkCatapultTrap : NetworkBehaviour {
 
     void OnTriggerEnter(Collider col) {
         if (!alreadyActivated) {
-            
+			if (col == null)
+			{
+				return;
+			}
             GameObject player = col.transform.parent.gameObject;
 
             if (player.tag == "Player") {
