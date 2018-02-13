@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CatapultTrap : MonoBehaviour {
-
-	private bool alreadyActive;
+public class NetworkCatapultTrap : NetworkBehaviour {
+	[SyncVar]
+	private bool alreadyActivated=false;
 
     public Vector3 power;
     public float extraBoost;
@@ -13,26 +14,23 @@ public class CatapultTrap : MonoBehaviour {
     public AudioClip trapSound;
     private AudioSource audioSource;
 
-    void Start() {
-        alreadyActive = true;
-    }
 
     void OnTriggerEnter(Collider col) {
-        if (alreadyActive != false) {
-            alreadyActive = false;
+        if (!alreadyActivated) {
+            
             GameObject player = col.transform.parent.gameObject;
 
             if (player.tag == "Player") {
                 Rigidbody rigidbody = player.GetComponent<Rigidbody>();
-
-                if (rigidbody != null) {
+				alreadyActivated = true;
+				if (rigidbody != null) {
                     rigidbody.AddForce(power * extraBoost, ForceMode.Impulse);
 
                     //TODO: REMOVE LIFE
                 }
 
                 //Sounds
-                if (playSound == true) {
+                if (playSound) {
                     audioSource = GetComponent<AudioSource>();
 
                     if (!audioSource.isPlaying) {
