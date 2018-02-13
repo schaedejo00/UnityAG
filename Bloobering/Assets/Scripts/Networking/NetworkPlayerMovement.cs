@@ -21,6 +21,7 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 	public GameObject barrel;
 	public GameObject scope;
 	public GameObject particleSystemBlob;
+	
 	public float maxSpeed = 5;
 	public float defaultSpeed = 400f;
 	public float rotationSpeed = 50;

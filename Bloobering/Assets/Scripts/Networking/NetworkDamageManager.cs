@@ -22,7 +22,5 @@ public class NetworkDamageManager :NetworkBehaviour {
 		Destroy(this.gameObject);
 		}
 	
-	void CmdExplode()
-	{
-	}
+	
 }

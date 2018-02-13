@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4517177455025004}
   - component: {fileID: 33706746778568252}
   - component: {fileID: 65218818488436720}
+  - component: {fileID: 114522031897734532}
   - component: {fileID: 23491048979672512}
-  - component: {fileID: 114880338219547576}
   - component: {fileID: 82920278736179548}
+  - component: {fileID: 114984156164580190}
   m_Layer: 0
   m_Name: Catapult Trap
   m_TagString: Untagged
@@ -177,7 +178,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114880338219547576
+--- !u!114 &114522031897734532
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -185,11 +186,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 1051740684678252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 968a857c58964e4478c556474f9a43d1, type: 3}
+  m_Script: {fileID: 11500000, guid: b7e4a8a12beb51448bfc9eaa93d809fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alreadyActive: 0
-  power: {x: 10, y: 10, z: 10}
-  extraBoost: 5
-  playSound: 1
-  trapSound: {fileID: 8300000, guid: 0e9f3cc7a778f924dbc3bb6525639f0a, type: 3}
+  power: {x: 0, y: 0, z: 0}
+  extraBoost: 0
+  playSound: 0
+  trapSound: {fileID: 0}
+--- !u!114 &114984156164580190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051740684678252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 77
+    i1: 121
+    i2: 68
+    i3: 30
+    i4: 193
+    i5: 154
+    i6: 233
+    i7: 100
+    i8: 26
+    i9: 99
+    i10: 102
+    i11: 88
+    i12: 130
+    i13: 180
+    i14: 169
+    i15: 232
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

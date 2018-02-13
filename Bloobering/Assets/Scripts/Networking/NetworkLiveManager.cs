@@ -12,6 +12,7 @@ public class NetworkLiveManager :NetworkBehaviour {
 	[SyncVar(hook = "OnChangeHealth")]
 	private int health;
 	public RectTransform healthBar;
+	public Text text;
 	public int startHealth=100;
     public delegate void Death();
     public event Death onDeath;
@@ -19,6 +20,7 @@ public class NetworkLiveManager :NetworkBehaviour {
     void Start()
     {
         Health = startHealth;
+		OnChangeHealth(health);
     }
     
     public int Health
@@ -56,6 +58,7 @@ public class NetworkLiveManager :NetworkBehaviour {
 	void OnChangeHealth(int health)
 	{
 		healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
+		text.text = health.ToString();
 	}
 
 }
