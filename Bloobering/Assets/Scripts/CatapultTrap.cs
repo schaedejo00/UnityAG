@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class CatapultTrap : MonoBehaviour {
 
-	private bool alreadyActive;
+	private bool alreadyActivated;
 
     public Vector3 power;
     public float extraBoost;
 
     public bool playSound;
+	[SerializeField]
+	private int damage;
     public AudioClip trapSound;
     private AudioSource audioSource;
 
-    void Start() {
-        alreadyActive = true;
-    }
+	[SerializeField]
+	private Animator animator;
 
     void OnTriggerEnter(Collider col) {
-        if (alreadyActive != false) {
-            alreadyActive = false;
-            GameObject player = col.transform.parent.gameObject;
+		if (alreadyActivated != true) {
+            alreadyActivated = true;
+            GameObject player = col.gameObject;
 
             if (player.tag == "Player") {
                 Rigidbody rigidbody = player.GetComponent<Rigidbody>();
-
+				animator.SetTrigger ("Triggered");
                 if (rigidbody != null) {
                     rigidbody.AddForce(power * extraBoost, ForceMode.Impulse);
-
-                    //TODO: REMOVE LIFE
+					player.GetComponent<LiveManager> ().takeDamage (damage);
                 }
 
                 //Sounds
