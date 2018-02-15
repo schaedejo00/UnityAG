@@ -31,4 +31,8 @@ obj/
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db
+Thumbs.db^
+/.vs/Bloobering/v15/Server/sqlite3/storage.ide-wal
+/.vs/Bloobering/v15/Server/sqlite3/storage.ide-shm
+/.vs/Bloobering/v15/Server/sqlite3/storage.ide
+/.vs/Bloobering/v15/Server/sqlite3/db.lock

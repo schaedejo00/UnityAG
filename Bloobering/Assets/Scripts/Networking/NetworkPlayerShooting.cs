@@ -7,8 +7,9 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 	public GameObject projectil;
 	public Transform shootPosition;
 	public KeyCode shooting;
-	public float range = 100;
+	public float range = 40;
 	public float defaultCooldown;
+	public float destroyShootAfter = 3F;
 	struct Cooldown
 	{
 		public bool enabled;
@@ -24,7 +25,7 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 
 	void Start(){
 		cooldown.delay = defaultCooldown;
-		//shootPosition= gameObject.transform.GetChild(0).GetChild(0).transform;
+		
 	}
 
 	// Update is called once per frame
@@ -35,20 +36,24 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 		}
 		if (Input.GetKey (shooting)) {
 			if (Time.time > cooldown.nextShot) {
-				CmdFire(shootPosition.position);
+				CmdFire();
 				cooldown.calcNextShoot();
 			}
 		}
 	
 	}
 	[Command]
-	void CmdFire(Vector3 shootpos)
+	void CmdFire()
 	{
-		GameObject shell = Instantiate(projectil);
+		GameObject shell = Instantiate(projectil, shootPosition.position, shootPosition.rotation);
 		shell.GetComponent<NetworkDamageManager>().owner = this.gameObject;
-		shell.transform.position = shootpos;
-		shell.transform.rotation = shootPosition.rotation;
-		shell.GetComponent<Rigidbody>().AddForce(shootPosition.forward.normalized * 100);
+		Color pcolor = GetComponent<NetworkPlayerMovement>().PlayerColor;
+		
+		shell.GetComponent<NetSelfDestruct>().r = pcolor.r;
+		shell.GetComponent<NetSelfDestruct>().g = pcolor.g;
+		shell.GetComponent<NetSelfDestruct>().b = pcolor.b;
+		shell.GetComponent<MeshRenderer>().material.color = GetComponent<NetworkPlayerMovement>().PlayerColor;
+		shell.GetComponent<Rigidbody>().velocity=shootPosition.transform.forward.normalized * range;
 		NetworkServer.Spawn(shell);
 	}
 }

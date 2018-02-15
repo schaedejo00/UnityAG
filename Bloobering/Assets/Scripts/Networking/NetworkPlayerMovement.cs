@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class NetworkPlayerMovement : NetworkBehaviour {
@@ -17,6 +18,10 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 		public KeyCode reset;
 	}
 	public GameObject Camera;
+	public GameObject barrel;
+	public GameObject scope;
+	public GameObject particleSystemBlob;
+	
 	public float maxSpeed = 5;
 	public float defaultSpeed = 400f;
 	public float rotationSpeed = 50;
@@ -27,6 +32,10 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 	
 	public float brakeStop = 0.2f;
 	public float RotationSpeedy = 5;
+	[SyncVar]
+	private bool colorCreated=false;
+	[SyncVar]
+	public float red, green, blue;
 	//public AudioSource motorSoundSource;
 	//public AudioClip engineDriving;
 	//public AudioClip engineIdle;
@@ -36,31 +45,80 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 	private NetworkLiveManager liveManager;
 	public bool randomColor;
 	private MeshRenderer meshRenderer;
+	[SyncVar]
 	private bool isAlive=true;
 	private Vector3 startPosition;
 	private float gravityon = 1;
 	private Rigidbody rb;
+	//public GameObject text;
 	private float rotation;
 	private float dashon = 0;
 	private float dashcount = 0;
 	private float yrot;
 	public KeyManager keySettings = new KeyManager();
 	private GameObject cam;
-	
+	private Color playerColor;
+
+	public Color PlayerColor
+	{
+		get
+		{
+			return playerColor;
+		}
+
+		set
+		{
+			playerColor = value;
+		}
+	}
+
+	public bool IsAlive
+	{
+		get
+		{
+			return isAlive;
+		}
+
+		set
+		{
+			//isAlive = value;
+		}
+	}
 
 	void Start () {
 		meshRenderer = GetComponentInChildren<MeshRenderer>();
 		if (meshRenderer != null && randomColor)
 		{
-			meshRenderer.material.color = new Color(Random.Range(0F, 1F), Random.Range(0F, 1F), Random.Range(0F, 1F));
+			
+			if (colorCreated)
+			{
+				PlayerColor = new Color(red, green, blue);
+			}
+			else
+			{
+				red = Random.Range(0F, 1F);
+				green = Random.Range(0F, 1F);
+				blue = Random.Range(0F, 1F);
+				PlayerColor = new Color(red, green, blue);
+				colorCreated = true;
+			}
+			meshRenderer.material.color = PlayerColor;
+			barrel.GetComponent<MeshRenderer>().material.color = PlayerColor;
+			particleSystemBlob.GetComponent<ParticleSystemRenderer>().material.color = PlayerColor;
+			var col = scope.GetComponent<ParticleSystem>().colorOverLifetime;
+			Gradient gradient = new Gradient();
+			gradient.SetKeys(new GradientColorKey[] { new GradientColorKey(PlayerColor,0.0F), new GradientColorKey(Color.white, 1.0F) },new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) } );
+			col.color = gradient;
 		}
 		if (isLocalPlayer)
 		{
+			
 			cam = Instantiate(Camera);
 			cam.GetComponent<Follower>().target = this.transform;
-			Debug.LogWarning(gameObject.GetComponent<NetworkIdentity>().netId);
+			//Debug.LogWarning(gameObject.GetComponent<NetworkIdentity>().netId);
+			GameObject.FindGameObjectWithTag("StartCamera").SetActive(false);
 		}
-		
+		scope.SetActive(isLocalPlayer);
 		Cursor.visible = false;
 		activeSpecialKeys = false;
 		Cursor.lockState = CursorLockMode.Locked;
@@ -73,6 +131,8 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 
 	void die(){
 		Cursor.lockState = CursorLockMode.None;
+		GameObject.FindGameObjectWithTag("StartCamera").SetActive(true);
+		Destroy(cam);
 		isAlive = false;
 	}
     void die(string killer)
@@ -85,6 +145,7 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 		if (!isLocalPlayer) {
 			return;
 		}
+		
 		fadeControll();
 		//Debug.Log(transform.eulerAngles);
 		//Physics.gravity = new Vector3(0, -20.0F, 0);

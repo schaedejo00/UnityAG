@@ -81,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1299479778343252
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,15 +158,14 @@ GameObject:
   - component: {fileID: 4634349103473570}
   - component: {fileID: 114654781172379152}
   - component: {fileID: 54198010046044222}
-  - component: {fileID: 114036824191680312}
   - component: {fileID: 114751931737018780}
   - component: {fileID: 114665301368115368}
-  - component: {fileID: 114600595095979596}
-  - component: {fileID: 114722513501265736}
+  - component: {fileID: 114152874398918760}
   - component: {fileID: 114177751222327094}
   - component: {fileID: 114043309221794748}
+  - component: {fileID: 195373008814847220}
   m_Layer: 0
-  m_Name: NetworkPlayer 1
+  m_Name: NetAI
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,7 +182,6 @@ GameObject:
   - component: {fileID: 33282239760345214}
   - component: {fileID: 135560991907722030}
   - component: {fileID: 23675197977161170}
-  - component: {fileID: 114358285538682804}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -251,7 +249,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827169586183368}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 78.9, y: 50, z: 206.1}
+  m_LocalPosition: {x: -4.966357, y: 1, z: -7.8959618}
   m_LocalScale: {x: 2.6, y: 2.6, z: 2.6}
   m_Children:
   - {fileID: 4380769509904620}
@@ -372,43 +370,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &114036824191680312
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1827169586183368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f94fc6d0f51da34db00db1f6b153c33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Camera: {fileID: 1327556784655364, guid: bf0148b8f4897c64f99d94ad138b84d7, type: 2}
-  barrel: {fileID: 1077502745777962}
-  scope: {fileID: 1509501119063150}
-  particleSystemBlob: {fileID: 1299479778343252}
-  maxSpeed: 5
-  defaultSpeed: 400
-  rotationSpeed: 50
-  dashMax: 150
-  dashTime: 10
-  dashSpeed: 5
-  brake: 0.05
-  brakeStop: 0.2
-  RotationSpeedy: 20
-  red: 0
-  green: 0
-  blue: 0
-  randomColor: 1
-  keySettings:
-    forward: 119
-    left: 97
-    back: 115
-    right: 100
-    dashKey: 0
-    brakekey: 0
-    fly: 0
-    reset: 0
 --- !u!114 &114043309221794748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -482,6 +443,20 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114152874398918760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827169586183368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39abcd0195dd4294d86d4f6e1d725a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchBoxMinPosition: {x: 0, y: 0}
+  searchBoxMaxPosition: {x: 30, y: 30}
+  patrolCooldown: 3
 --- !u!114 &114177751222327094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -503,35 +478,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &114358285538682804
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1899827635218614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f5db11b7917fe48b2cd6b1690fb37f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeedX: 50
---- !u!114 &114600595095979596
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1827169586183368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb75b78580dd7fc48971ef2e512c13c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectil: {fileID: 1195489367648164, guid: 506f666f803272349a93dd1f0df18b21, type: 2}
-  shootPosition: {fileID: 4645550022902672}
-  shooting: 102
-  range: 20
-  defaultCooldown: 1
-  destroyShootAfter: 3
 --- !u!114 &114622811321072990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -575,40 +521,24 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 66
-    i1: 217
-    i2: 84
-    i3: 249
-    i4: 120
-    i5: 111
-    i6: 33
-    i7: 68
+    i0: 79
+    i1: 97
+    i2: 94
+    i3: 107
+    i4: 240
+    i5: 13
+    i6: 186
+    i7: 52
     i8: 91
-    i9: 114
-    i10: 58
-    i11: 177
-    i12: 112
-    i13: 139
-    i14: 181
-    i15: 98
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
---- !u!114 &114722513501265736
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1827169586183368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 940c45afce77e4c4384c5b3f3605ff58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jump: 0
-  jumpspeed: 0
-  gravity: 0
-  cooldown: 0
-  jumptimeadd: 0
+    i9: 21
+    i10: 129
+    i11: 253
+    i12: 28
+    i13: 197
+    i14: 132
+    i15: 188
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114747873436591450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -713,6 +643,27 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &195373008814847220
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827169586183368}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: -1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!198 &198063922167657458
 ParticleSystem:
   m_ObjectHideFlags: 1
