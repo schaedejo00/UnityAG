@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update () {
 		fadeControll();
-		Debug.Log(transform.eulerAngles);
+//		Debug.Log(transform.eulerAngles);
 		//Physics.gravity = new Vector3(0, -20.0F, 0);
 		if (isAlive) {
 			movementControls ();
