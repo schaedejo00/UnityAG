@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95436787046891418}
   - component: {fileID: 65105552012722866}
   - component: {fileID: 135150170730120564}
+  - component: {fileID: 114365856341465410}
   m_Layer: 0
   m_Name: tower_lvl1
   m_TagString: Untagged
@@ -38,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1058440869475206}
   m_LocalRotation: {x: -0.000000059604645, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 178.1, y: 7.2333484e-17, z: 587.1195}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalPosition: {x: 1.152, y: 0, z: 0.622843}
+  m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 0.79999995}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1ffd983d41367184a9b6cd4d2f45861d, type: 2}
+  - {fileID: 2100000, guid: 6d825a7562c8c9845bc4a0b61cc2eb41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,6 +115,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114365856341465410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058440869475206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01744b0091ad5149ab31ae3cacbe510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textures: {fileID: 2800000, guid: c9f7f3f323b3edb45ad906e4334d6015, type: 3}
 --- !u!135 &135150170730120564
 SphereCollider:
   m_ObjectHideFlags: 1

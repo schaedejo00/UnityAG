@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 114272883530711888}
   - component: {fileID: 114879896815446522}
   m_Layer: 0
-  m_Name: Player_Blop
+  m_Name: Player_Blop_blue
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

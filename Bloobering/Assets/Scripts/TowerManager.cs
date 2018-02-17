@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerManager : MonoBehaviour {
+
+	public Texture textures;
+
 	private MeshRenderer meshRenderer;
+	private Renderer rend;
 
 	// Use this for initialization
 	void Start () {
@@ -15,11 +19,10 @@ public class TowerManager : MonoBehaviour {
 		
 	}
 	void OnTriggerEnter (Collider col){
-		Debug.Log ("Berührung_erkannt");
+		//Debug.Log ("Berührung_erkannt");
 		if (col.gameObject.tag == "Player"){
-			Debug.Log ("PLayer_erkannt");
-			//meshRenderer = col.gameObject.GetComponentInChildren<MeshRenderer>();
-			//GetComponentInChildren<MeshRenderer>().material.color = meshRenderer.material.color;
+			//Debug.Log ("PLayer_erkannt");
+			GetComponentInChildren<MeshRenderer>().material.mainTexture = textures;
 		}
 	}
 }
