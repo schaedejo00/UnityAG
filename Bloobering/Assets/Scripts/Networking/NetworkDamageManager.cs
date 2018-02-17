@@ -7,7 +7,6 @@ using UnityEngine.Networking;
 public class NetworkDamageManager :NetworkBehaviour {
 	[SyncVar]
 	public int damage=50;
-	public GameObject explosion;
 	public float duration = 1F;
 	public GameObject owner;
 	private Color ownerColor;

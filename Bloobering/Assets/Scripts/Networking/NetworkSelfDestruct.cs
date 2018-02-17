@@ -2,18 +2,21 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class NetSelfDestruct :NetworkBehaviour {
+public class NetworkSelfDestruct :NetworkBehaviour {
 
 	public float cooldown;
 	private float timer;
 	public GameObject shellExplosion;
 	[SyncVar]
 	public float r, g, b;
-	Transform Position;
+    Color color; 
+    Transform Position;
 
 	// Use this for initialization
 	void Start () {
 		timer = Time.time + cooldown;
+        color = new Color(r, g, b);
+        gameObject.GetComponent<MeshRenderer>().material.color = color;
 	}
 	
 	// Update is called once per frame
@@ -23,10 +26,13 @@ public class NetSelfDestruct :NetworkBehaviour {
 		}
 	}
 	void OnCollisionEnter (Collision col){
+        
+        GameObject explosion = Instantiate (shellExplosion);
+        explosion.GetComponent<NetworkExplosion>().r = color.r;
+        explosion.GetComponent<NetworkExplosion>().g = color.g;
+        explosion.GetComponent<NetworkExplosion>().b = color.b;
+        explosion.transform.position = transform.position;
 		
-		GameObject explosion = Instantiate (shellExplosion);
-		explosion.transform.position = transform.position;
-		explosion.GetComponent<ParticleSystemRenderer>().material.color = new Color(r, g, b);
 		NetworkServer.Spawn(explosion);
 
 		if (col.gameObject.tag == "Player") {

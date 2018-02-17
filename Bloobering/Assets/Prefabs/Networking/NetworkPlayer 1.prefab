@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 114722513501265736}
   - component: {fileID: 114177751222327094}
   - component: {fileID: 114043309221794748}
+  - component: {fileID: 135970592107964294}
   m_Layer: 0
   m_Name: NetworkPlayer 1
   m_TagString: Player
@@ -181,7 +182,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4380769509904620}
   - component: {fileID: 33282239760345214}
-  - component: {fileID: 135560991907722030}
   - component: {fileID: 23675197977161170}
   - component: {fileID: 114358285538682804}
   m_Layer: 0
@@ -409,6 +409,8 @@ MonoBehaviour:
     brakekey: 0
     fly: 0
     reset: 0
+  gameOverCanvas: {fileID: 1069955446794946, guid: 5f98ef34dec41c748a92c1cc0def3e63,
+    type: 2}
 --- !u!114 &114043309221794748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -688,12 +690,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!135 &135560991907722030
+--- !u!135 &135970592107964294
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1899827635218614}
+  m_GameObject: {fileID: 1827169586183368}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -7518,7 +7520,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1278470510483824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 224530901059810582}
@@ -7538,7 +7540,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103060607853994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -68.5, y: -128.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224382702059225702}
@@ -7557,7 +7559,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059565403760988}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -68, y: -112, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224528859767851872}

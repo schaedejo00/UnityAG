@@ -58,8 +58,11 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 	public KeyManager keySettings = new KeyManager();
 	private GameObject cam;
 	private Color playerColor;
+    public GameObject gameOverCanvas;
+    private GameObject gameOverPanel;
+    private Text gameOverText;
 
-	public Color PlayerColor
+    public Color PlayerColor
 	{
 		get
 		{
@@ -86,7 +89,11 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 	}
 
 	void Start () {
+        gameOverPanel = Instantiate(gameOverCanvas).transform.GetChild(0).gameObject;
+        gameOverPanel.SetActive(false);
+        gameOverText = gameOverPanel.GetComponentInChildren<Text>();
 		meshRenderer = GetComponentInChildren<MeshRenderer>();
+
 		if (meshRenderer != null && randomColor)
 		{
 			
@@ -112,11 +119,11 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 		}
 		if (isLocalPlayer)
 		{
-			
-			cam = Instantiate(Camera);
+            gameOverPanel.SetActive(false);
+            cam = Instantiate(Camera);
 			cam.GetComponent<Follower>().target = this.transform;
 			//Debug.LogWarning(gameObject.GetComponent<NetworkIdentity>().netId);
-			GameObject.FindGameObjectWithTag("StartCamera").SetActive(false);
+			//GameObject.FindGameObjectWithTag("StartCamera").SetActive(false);
 		}
 		scope.SetActive(isLocalPlayer);
 		Cursor.visible = false;
@@ -131,8 +138,13 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 
 	void die(){
 		Cursor.lockState = CursorLockMode.None;
-		GameObject.FindGameObjectWithTag("StartCamera").SetActive(true);
-		Destroy(cam);
+        //GameObject.FindGameObjectWithTag("StartCamera").SetActive(true);
+        //Destroy(cam);
+        if (isLocalPlayer)
+        {
+            gameOverPanel.SetActive(true);
+            gameOverText.text = "Game Over. Press R for Respawn";
+        }
 		isAlive = false;
 	}
     void die(string killer)
@@ -146,11 +158,12 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 			return;
 		}
 		
-		fadeControll();
+		
 		//Debug.Log(transform.eulerAngles);
 		//Physics.gravity = new Vector3(0, -20.0F, 0);
 		if (isAlive) {
-			movementControls ();
+            fadeControll();
+            movementControls ();
 			if (Input.GetKey (KeyCode.Alpha2) && Input.GetKey (KeyCode.Alpha3) && Input.GetKeyDown (KeyCode.Alpha7)) {
 				activeSpecialKeys = !activeSpecialKeys;
 				Debug.Log (activeSpecialKeys);
@@ -167,16 +180,29 @@ public class NetworkPlayerMovement : NetworkBehaviour {
 				//motorSoundSource.Play () ;
 			//}
 			specialControls ();
-			//if (isAir == true && Time.time > timer) {
-				//rb.AddForce (new Vector3 (0, gravity * -jumpspeed, 0));
-			//	print ("truejump is true");
-			//	timer = Time.time + cooldown;
-				
-			}
+            //if (isAir == true && Time.time > timer) {
+            //rb.AddForce (new Vector3 (0, gravity * -jumpspeed, 0));
+            //	print ("truejump is true");
+            //	timer = Time.time + cooldown;
+
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.R))
+            {
+                respawn();
+            }
+        }
 		}
 
+    private void respawn()
+    {
+        liveManager.Health = liveManager.startHealth;
+        isAlive = true;
+        gameOverPanel.SetActive(false);
+    }
 
-	private void dash(){
+    private void dash(){
 		if (Input.GetKey (keySettings.dashKey) && dashcount < dashMax) {
 			dashcount = dashcount + 1;
 		}

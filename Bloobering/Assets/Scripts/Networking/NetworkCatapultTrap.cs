@@ -10,8 +10,13 @@ public class NetworkCatapultTrap : NetworkBehaviour {
     public Vector3 power;
     public float extraBoost;
 
+    [SerializeField]
+    private int damage;
+
     public bool playSound;
     public AudioClip trapSound;
+    [SerializeField]
+    private Animator animator;
     private AudioSource audioSource;
 
 
@@ -21,11 +26,13 @@ public class NetworkCatapultTrap : NetworkBehaviour {
 			{
 				return;
 			}
-            GameObject player = col.transform.parent.gameObject;
+            GameObject player = col.gameObject;
 
             if (player.tag == "Player") {
                 Rigidbody rigidbody = player.GetComponent<Rigidbody>();
-				alreadyActivated = true;
+                player.GetComponent<NetworkLiveManager>().takeDamage(damage);
+                animator.SetTrigger("Triggered");
+                alreadyActivated = true;
 				if (rigidbody != null) {
                     rigidbody.AddForce(power * extraBoost, ForceMode.Impulse);
 

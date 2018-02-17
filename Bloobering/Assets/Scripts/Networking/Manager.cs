@@ -8,8 +8,11 @@ public class Manager : NetworkManager {
 	public Transform respawnArea;
 	public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
 	{
-		var player = (GameObject)GameObject.Instantiate(playerPrefab,startPositions[Random.Range(0,startPositions.Capacity)].position, Quaternion.identity);
+        int index = Random.Range(0, startPositions.Count - 1);
+        GameObject player = (GameObject)GameObject.Instantiate(playerPrefab,startPositions[index].position, Quaternion.identity);
+        
 		players.Add(player);
 		NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 	}
+   
 }
