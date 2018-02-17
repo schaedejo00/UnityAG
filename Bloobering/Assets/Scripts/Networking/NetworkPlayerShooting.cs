@@ -37,6 +37,7 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 		if (Input.GetKey (shooting)) {
 			if (Time.time > cooldown.nextShot) {
 				CmdFire();
+                //Debug.LogError("Shooting");
 				cooldown.calcNextShoot();
 			}
 		}
@@ -49,10 +50,9 @@ public class NetworkPlayerShooting :NetworkBehaviour {
 		shell.GetComponent<NetworkDamageManager>().owner = this.gameObject;
 		Color pcolor = GetComponent<NetworkPlayerMovement>().PlayerColor;
 		
-		shell.GetComponent<NetSelfDestruct>().r = pcolor.r;
-		shell.GetComponent<NetSelfDestruct>().g = pcolor.g;
-		shell.GetComponent<NetSelfDestruct>().b = pcolor.b;
-		shell.GetComponent<MeshRenderer>().material.color = GetComponent<NetworkPlayerMovement>().PlayerColor;
+		shell.GetComponent<NetworkSelfDestruct>().r = pcolor.r;
+		shell.GetComponent<NetworkSelfDestruct>().g = pcolor.g;
+		shell.GetComponent<NetworkSelfDestruct>().b = pcolor.b;
 		shell.GetComponent<Rigidbody>().velocity=shootPosition.transform.forward.normalized * range;
 		NetworkServer.Spawn(shell);
 	}

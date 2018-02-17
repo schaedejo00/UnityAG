@@ -35,7 +35,7 @@ public class NetworkLiveManager :NetworkBehaviour {
             health = value;
             if (Health <= 0)
             {
-                Debug.LogError("Dead");
+                //Debug.LogError("Dead");
                 onDeath();
             }
 			healthBar.sizeDelta = new Vector2(health,healthBar.sizeDelta.y);

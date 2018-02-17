@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33136020049843348}
   - component: {fileID: 135456954341724358}
   - component: {fileID: 23794828957693754}
-  - component: {fileID: 114512116017933606}
   - component: {fileID: 54236129329225696}
+  - component: {fileID: 114544407653227464}
   - component: {fileID: 114432964141610678}
   - component: {fileID: 114381168922391590}
   - component: {fileID: 114634959304891502}
@@ -150,7 +150,7 @@ MonoBehaviour:
   explosion: {fileID: 1287762702078542, guid: a39833fb8d544c6439cbabe222391fc5, type: 2}
   duration: 1
   owner: {fileID: 0}
---- !u!114 &114512116017933606
+--- !u!114 &114544407653227464
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

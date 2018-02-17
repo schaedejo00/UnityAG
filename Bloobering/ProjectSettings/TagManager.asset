@@ -9,6 +9,7 @@ TagManager:
   - Border
   - Healtstate
   - StartCamera
+  - GameOver
   layers:
   - Default
   - TransparentFX
