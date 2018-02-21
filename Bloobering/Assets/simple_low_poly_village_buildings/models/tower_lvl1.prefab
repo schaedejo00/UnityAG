@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textures: {fileID: 2800000, guid: c9f7f3f323b3edb45ad906e4334d6015, type: 3}
+  cooldown: 5
+  exitTimerPerSecond: 0.5
 --- !u!135 &135150170730120564
 SphereCollider:
   m_ObjectHideFlags: 1
