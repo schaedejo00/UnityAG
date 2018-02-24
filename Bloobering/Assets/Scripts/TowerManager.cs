@@ -17,35 +17,35 @@ public class TowerManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		pauseCooldown = cooldown + 1;
+		pauseCooldown = cooldown;
 	}
 	//timer - Time.time
 	// Update is called once per frame
 	void Update () {
 		if (timer - Time.time > 0) {
-			
 			if (playerStay == false) {
 				Debug.Log (pauseCooldown);
 			} else {
 				Debug.Log (timer - Time.time);
 			}
+		}
 
-			if (cooldown >= pauseCooldown + exitTimerPerSecond) {
+		if (playerStay == false) {
+			if (cooldown > pauseCooldown + exitTimerPerSecond) {
 				if (Time.time > pauseCooldownTimer) {
-					//Debug.Log ("Pause_Cooldown_wurde_erhöt");
 					pauseCooldown = pauseCooldown + exitTimerPerSecond;
+					timer = Time.time + pauseCooldown;
 					pauseCooldownTimer = Time.time + 1;
 				}
 			} else {
 				pauseCooldown = cooldown;
 			}
-
 		}
 	}
 
 	void OnTriggerEnter (Collider col){
-		playerStay = true;
 		if (col.gameObject.tag == "Player") {
+			playerStay = true;
 			if (pauseCooldown < cooldown) {
 				timer = Time.time + pauseCooldown;
 			} else {
@@ -66,7 +66,7 @@ public class TowerManager : MonoBehaviour {
 		if (col.gameObject.tag == "Player") {
 			playerStay = false;
 			pauseCooldown = timer - Time.time;
-			pauseCooldownTimer = Time.time + 1;
+			pauseCooldownTimer = Time.time;
 		}
 	}
 }

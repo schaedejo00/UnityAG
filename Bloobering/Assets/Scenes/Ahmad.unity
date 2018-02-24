@@ -1682,16 +1682,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114365856341465410, guid: 5a0564be916f44248bc20e6c25a796ce,
-        type: 2}
-      propertyPath: cooldown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114365856341465410, guid: 5a0564be916f44248bc20e6c25a796ce,
-        type: 2}
-      propertyPath: exitTimerPerSecond
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a0564be916f44248bc20e6c25a796ce, type: 2}
   m_IsPrefabParent: 0
