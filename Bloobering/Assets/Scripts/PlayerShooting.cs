@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Helper;
 
 public class PlayerShooting : MonoBehaviour {
 
@@ -8,17 +9,7 @@ public class PlayerShooting : MonoBehaviour {
 	public KeyCode shooting;
 	public float range = 10;
 	public float defaultCooldown;
-	struct Cooldown
-	{
-		public bool enabled;
-		public float nextShot;
-		public float delay;
-		public float calcNextShoot()
-		{
-			nextShot = Time.time + delay;
-			return nextShot;
-		}
-	}
+	
 	private Cooldown cooldown = new Cooldown();
 
 	void Start(){
@@ -28,9 +19,9 @@ public class PlayerShooting : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (shooting)) {
-			if (Time.time > cooldown.nextShot) {
+			if (cooldown.isNextEvent()) {
 				Fire();
-				cooldown.calcNextShoot();
+				cooldown.calcNextEvent();
 			}
 		}
 	
